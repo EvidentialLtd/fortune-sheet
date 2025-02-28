@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { updateCell, addSheet, locale } from "@fortune-sheet/core";
+import { updateCell, addSheet, locale } from "@evidential-fortune-sheet/core";
 // @ts-ignore
 import WorkbookContext from "../../context";
 import SVGIcon from "../SVGIcon";

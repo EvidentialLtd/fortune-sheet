@@ -18,7 +18,7 @@ import {
   Sheet,
   CellMatrix,
   CellWithRowAndCol,
-} from "@fortune-sheet/core";
+} from "@evidential-fortune-sheet/core";
 import { applyPatches } from "immer";
 import _ from "lodash";
 import { SetContextOptions } from "../../context";
@@ -317,6 +317,13 @@ export function generateAPIs(
             v.userId == null ? v.username : v.userId
           );
         }
+      });
+    },
+
+    setSearchReplace: (state: boolean) => {
+      setContext((draftCtx) => {
+        draftCtx.showSearch = state;
+        draftCtx.showReplace = state;
       });
     },
 

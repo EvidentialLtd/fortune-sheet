@@ -5,7 +5,7 @@ import {
   onCommentBoxResizeStart,
   setEditingComment,
   showComments,
-} from "@fortune-sheet/core";
+} from "@evidential-fortune-sheet/core";
 import _ from "lodash";
 import ContentEditable from "../SheetOverlay/ContentEditable";
 import WorkbookContext from "../../context";

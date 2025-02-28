@@ -129,8 +129,11 @@ export function createFilterOptions(
   // $(`#luckysheet-filter-selected-sheet${ctx.currentSheetIndex}`).remove();
   // $(`#luckysheet-filter-options-sheet${ctx.currentSheetIndex}`).remove();
   // eslint-disable-next-line no-undef
-  const allowEdit = isAllowEdit(ctx);
-  if (!allowEdit) return;
+
+  // NOTE: The commented out code below checks if the user is allowed to edit before adding the filter
+  // const allowEdit = isAllowEdit(ctx);
+  // if (!allowEdit) return;
+
   if (sheetId != null && sheetId !== ctx.currentSheetId) return;
   const sheetIndex = getSheetIndex(ctx, ctx.currentSheetId);
   if (sheetIndex == null) return;

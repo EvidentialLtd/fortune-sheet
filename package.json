@@ -1,11 +1,11 @@
 {
-  "name": "fortune-sheet",
+  "name": "evidential-fortune-sheet",
   "private": true,
   "version": "0.1.0",
   "workspaces": [
     "packages/*"
   ],
-  "repository": "https://github.com/ruilisi/fortune-sheet",
+  "repository": "https://github.com/Willco9455/fortune-sheet-evidential.git",
   "license": "MIT",
   "scripts": {
     "dev": "npx yarn storybook",
@@ -16,6 +16,7 @@
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx,.json ./packages",
     "postinstall": "lerna run build --scope=@fortune-sheet/formula-parser",
     "publish": "npm publish packages/core --registry 'https://registry.npmjs.org' && npm publish packages/react --registry 'https://registry.npmjs.org'",
+    "publish-react": "npm publish packages/react --registry 'https://registry.npmjs.org'",
     "test": "jest",
     "coverage": "jest --coverage"
   },
