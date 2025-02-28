@@ -187,8 +187,9 @@ export function createFilterOptions(
 }
 
 export function clearFilter(ctx: Context) {
-  const allowEdit = isAllowEdit(ctx);
-  if (!allowEdit) return;
+  // NOTE: The commented out code below checks if the user is allowed to edit before clearing the filter
+  // const allowEdit = isAllowEdit(ctx);
+  // if (!allowEdit) return;
   const sheetIndex = getSheetIndex(ctx, ctx.currentSheetId);
   const hiddenRows = _.reduce(
     ctx.filter,

@@ -62,6 +62,10 @@ export function setSheetOrder(ctx: Context, orderList: Record<string, number>) {
   });
 }
 
+export function setTouchMode(ctx: Context, mode: 'select' | 'pan') {
+  ctx.touchMode = mode;
+}
+
 export function scroll(
   ctx: Context,
   scrollbarX: HTMLDivElement | null,

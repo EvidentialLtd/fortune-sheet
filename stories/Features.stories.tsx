@@ -91,3 +91,15 @@ export const MultiInstance: StoryFn<typeof Workbook> = () => {
     </div>
   );
 };
+
+export const TestingTablet: StoryFn<typeof Workbook> = () => {
+  // const [data, setData] = useState<Sheet[]>([dataVerification]);
+
+  const [data, setData] = useState<Sheet[]>([cell as any]);
+  
+  return (
+    <div style={{ width: "100%", height: "100vh" }}>
+      <Workbook data={data} />
+    </div>
+  );
+};

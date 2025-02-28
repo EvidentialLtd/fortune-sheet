@@ -69,6 +69,59 @@ export const GetCellValue: StoryFn<typeof Workbook> = () => {
   );
 };
 
+export const OpenReplace: StoryFn<typeof Workbook> = () => {
+  const ref = useRef<WorkbookInstance>(null);
+  var searchReplace = false;
+  const [data, setData] = useState<Sheet[]>([
+    {
+      name: "Sheet1",
+      celldata: [{ r: 0, c: 0, v: { v: "fortune" } }],
+      order: 0,
+      row: 1,
+      column: 1,
+    },
+  ]);
+  const onChange = useCallback((d: Sheet[]) => {
+    setData(d);
+  }, []);
+  return (
+    <ApiExecContainer
+      onRun={() => {
+        return ref.current?.setSearchReplace(!searchReplace)
+        searchReplace = !searchReplace;
+      }}
+    >
+      <Workbook ref={ref} data={data} onChange={onChange} />
+    </ApiExecContainer>
+  );
+};
+
+export const ChangeDragMode: StoryFn<typeof Workbook> = () => {
+  const ref = useRef<WorkbookInstance>(null);
+  // var searchReplace = false;
+  // const [data, setData] = useState<Sheet[]>([
+  //   {
+  //     name: "Sheet1",
+  //     celldata: [{ r: 0, c: 0, v: { v: "fortune" } }],
+  //     order: 0,
+  //     row: 1,
+  //     column: 1,
+  //   },
+  // ]);
+  // const onChange = useCallback((d: Sheet[]) => {
+  //   setData(d);
+  // }, []);
+  return (
+    <ApiExecContainer
+      onRun={() => {
+        return ref.current?.setTouchMode("select")
+      }}
+    >
+      <Workbook ref={ref} data={[{name: "Sheet1",}]} />
+    </ApiExecContainer>
+  );
+};
+
 export const SetCellValue: StoryFn<typeof Workbook> = () => {
   const ref = useRef<WorkbookInstance>(null);
   const [data, setData] = useState<Sheet[]>([

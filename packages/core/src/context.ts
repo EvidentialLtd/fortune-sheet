@@ -201,6 +201,8 @@ export type Context = {
   showGridLines: boolean;
   allowEdit: boolean;
 
+  touchMode: 'select' | 'pan';
+
   fontList: any[];
   defaultFontSize: number;
 
@@ -216,6 +218,7 @@ export type Context = {
   showSheetList?: Boolean;
   // 只读模式公式被引用单元格强制高光
   forceFormulaRef?: Boolean;
+
 
   sheetFocused: boolean; // property to track sheet focus for keyboard navigation
 
@@ -240,13 +243,15 @@ export function defaultContext(refs: RefValues): Context {
     config: {},
     // 提醒弹窗
     warnDialog: undefined,
-    currency: "¥",
+    currency: "£",
     rangeDialog: {
       show: false,
       rangeTxt: "",
       type: "",
       singleSelect: false,
     },
+
+    touchMode: 'pan',
 
     dataVerification: {
       selectStatus: false,

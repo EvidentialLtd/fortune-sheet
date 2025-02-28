@@ -264,17 +264,47 @@ const SheetOverlay: React.FC = () => {
 
   const onTouchStart = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
+
+      if (context.touchMode === 'select') {
+        e.stopPropagation();
+        simulatMouseFromTouch(e, 'mousedown');
+        return;
+      }
+
       const { nativeEvent } = e;
       setContext((draftContext) => {
         handleOverlayTouchStart(draftContext, nativeEvent, refs.globalCache);
       });
       e.stopPropagation();
+
     },
-    [refs.globalCache, setContext]
+    [context.touchMode, refs.globalCache, setContext]
   );
+
+
+  const simulatMouseFromTouch = (e: React.TouchEvent<HTMLDivElement>, type: string) => {
+    const touch = e.touches[0] || e.changedTouches[0]; // Get first touch
+    if (!touch) return;
+
+    const simulatedEvent = new MouseEvent(type, {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+
+    touch.target.dispatchEvent(simulatedEvent);
+  }
 
   const onTouchMove = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
+
+      if (context.touchMode === 'select') {
+        e.stopPropagation();
+        simulatMouseFromTouch(e, 'mousemove');
+        return;
+      } 
       const { nativeEvent } = e;
       setContext((draftCtx) => {
         handleOverlayTouchMove(
@@ -287,12 +317,17 @@ const SheetOverlay: React.FC = () => {
       });
       // e.stopPropagation();
     },
-    [refs.globalCache, refs.scrollbarX, refs.scrollbarY, setContext]
+    [context.touchMode, refs.globalCache, refs.scrollbarX, refs.scrollbarY, setContext]
   );
 
-  const onTouchEnd = useCallback(() => {
+  const onTouchEnd = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (context.touchMode === 'select') {
+      e.stopPropagation();
+      simulatMouseFromTouch(e, 'mouseup');
+      return;
+    }
     handleOverlayTouchEnd(refs.globalCache);
-  }, [refs.globalCache]);
+  }, [context.touchMode, refs.globalCache]);
 
   const handleBottomAddRow = useCallback(() => {
     const valueStr =

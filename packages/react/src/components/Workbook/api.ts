@@ -257,6 +257,10 @@ export function generateAPIs(
 
     getAllSheets: () => api.getAllSheets(context),
 
+    setTouchMode: (mode: 'pan' | 'select') =>  {
+      setContext((draftCtx) => api.setTouchMode(draftCtx, mode))
+    },
+
     getSheet: (options: api.CommonOptions = {}) =>
       api.getSheetWithLatestCelldata(context, options),
 
