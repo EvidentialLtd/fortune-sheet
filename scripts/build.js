@@ -16,8 +16,10 @@ tsconfig.exclude = [
 const tsconfigJson = JSON.stringify(tsconfig);
 fs.writeFileSync("packages/core/tsconfig.json", tsconfigJson);
 fs.writeFileSync("packages/react/tsconfig.json", tsconfigJson);
+fs.writeFileSync("packages/fortune-excel/tsconfig.json", tsconfigJson);
 
 spawnSync("father-build", { stdio: "inherit" });
 
 fs.rmSync("packages/core/tsconfig.json");
 fs.rmSync("packages/react/tsconfig.json");
+fs.rmSync("packages/fortune-excel/tsconfig.json");

@@ -17,7 +17,7 @@
     "paths": {
       "@evidential-fortune-sheet/core": ["packages/core/src"],
       "@evidential-fortune-sheet/react": ["packages/react/src"],
-      "@evidential-fortune-sheet/fortune-excel": ["packages/fortune-excel/src"],
+      "@evidential-fortune-sheet/fortune-excel": ["packages/fortune-excel/src"]
     }
   },
   "include": ["packages/*/src", "stories/"],

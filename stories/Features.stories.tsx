@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Sheet } from "@evidential-fortune-sheet/core";
 import { Workbook } from "@evidential-fortune-sheet/react";
@@ -92,14 +92,20 @@ export const MultiInstance: StoryFn<typeof Workbook> = () => {
   );
 };
 
-export const TestingTablet: StoryFn<typeof Workbook> = () => {
-  // const [data, setData] = useState<Sheet[]>([dataVerification]);
+import { ImportHelper, importToolBarItem, exportToolBarItem } from "@evidential-fortune-sheet/fortune-excel";
 
-  const [data, setData] = useState<Sheet[]>([cell as any]);
+export const EvidentialTesting: StoryFn<typeof Workbook> = () => {
+
+  const [sheets, setSheets] = useState<Sheet[]>([cell as any]);
+  const workbookRef = useRef();
+  const [key, setKey] = useState(0);
+
   
   return (
     <div style={{ width: "100%", height: "100vh" }}>
-      <Workbook data={data} />
+      <ImportHelper setKey={setKey} setSheets={setSheets} sheetRef={workbookRef} />
+      <Workbook key={key} data={sheets} ref={workbookRef as any}
+        customToolbarItems={[exportToolBarItem(workbookRef), importToolBarItem()]} />
     </div>
   );
 };
