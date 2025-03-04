@@ -147,6 +147,7 @@ export const LinkEditCard: React.FC<LinkCardProps> = ({
     }
   }, [context, selectingCellRange]);
 
+  // This is where the link popup is bieng triggered
   if (!isEditing) {
     return (
       <div
@@ -160,6 +161,12 @@ export const LinkEditCard: React.FC<LinkCardProps> = ({
         <div
           className="link-content"
           onClick={() => {
+            // Dispatch link clicked event when a web page link is clicked to be handled in the parent
+            if (linkType === "webpage") {
+              window.dispatchEvent(new CustomEvent("linkClicked", { detail: { linkAddress } }));
+              return;
+            }
+            
             setContext((draftCtx) =>
               goToLink(
                 draftCtx,
