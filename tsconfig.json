@@ -20,7 +20,7 @@
       "@evidential-fortune-sheet/fortune-excel": ["packages/fortune-excel/src"]
     }
   },
-  "include": ["packages/*/src", "stories/"],
+  "include": ["packages/*/src", "stories/", "packages/fortune-excel/tsconfig.json"],
   "exclude": [
     "node_modules",
     "packages/*/lib",

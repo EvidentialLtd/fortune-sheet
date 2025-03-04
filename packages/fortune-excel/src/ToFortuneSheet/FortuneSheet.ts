@@ -817,7 +817,7 @@ export class FortuneSheet extends FortuneSheetBase {
         _tooltip = getXmlAttibute(attrList, "tooltip", null);
       let _type: IfortunesheetHyperlinkType = _address
         ? "internal"
-        : "external";
+        : "webpage";
 
       // external hyperlink
       if (!_address) {
@@ -837,6 +837,11 @@ export class FortuneSheet extends FortuneSheetBase {
           _type = findRid.attributeList[
             "TargetMode"
           ]?.toLocaleLowerCase() as IfortunesheetHyperlinkType;
+        }
+
+        // fix for bug that crashes app on external link click
+        if (_type as any === 'external') {
+          _type = 'webpage'; 
         }
       }
 
