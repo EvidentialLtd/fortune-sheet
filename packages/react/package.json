@@ -1,6 +1,6 @@
 {
   "name": "@evidential-fortune-sheet/react",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.esm.js",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@evidential-fortune-sheet/core": "^1.0.4",
+    "@evidential-fortune-sheet/fortune-excel": "^1.0.1",
     "@types/regenerator-runtime": "^0.13.6",
     "immer": "^9.0.12",
     "lodash": "^4.17.21",
