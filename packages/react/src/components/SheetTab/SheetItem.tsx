@@ -171,6 +171,7 @@ const SheetItem: React.FC<Props> = ({ sheet, isDropPlaceholder }) => {
             }`
       }
       onClick={() => {
+        window.dispatchEvent(new CustomEvent("sheetClicked", { detail: { sheetId: sheet.id } }));
         if (isDropPlaceholder) return;
         setContext((draftCtx) => {
           draftCtx.sheetScrollRecord[draftCtx.currentSheetId] = {
