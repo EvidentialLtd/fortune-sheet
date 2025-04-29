@@ -187,18 +187,18 @@ export function isLinkValid(
 ) {
   if (!linkAddress) return { isValid: false, tooltip: "" };
   const { insertLink } = locale(ctx);
-  if (linkType === "webpage") {
-    if (!/^http[s]?:\/\//.test(linkAddress)) {
-      linkAddress = `https://${linkAddress}`;
-    }
-    if (
-      // eslint-disable-next-line no-useless-escape
-      !/^http[s]?:\/\/([\w\-\.]+)+[\w-]*([\w\-\.\/\?%&=]+)?$/gi.test(
-        linkAddress
-      )
-    )
-      return { isValid: false, tooltip: insertLink.tooltipInfo1 };
-  }
+  // if (linkType === "webpage") {
+  //   if (!/^http[s]?:\/\//.test(linkAddress)) {
+  //     linkAddress = `https://${linkAddress}`;
+  //   }
+  //   if (
+  //     // eslint-disable-next-line no-useless-escape
+  //     !/^http[s]?:\/\/([\w\-\.]+)+[\w-]*([\w\-\.\/\?%&=]+)?$/gi.test(
+  //       linkAddress
+  //     )
+  //   )
+  //     return { isValid: false, tooltip: insertLink.tooltipInfo1 };
+  // }
   if (linkType === "cellrange" && !iscelldata(linkAddress)) {
     return { isValid: false, tooltip: insertLink.invalidCellRangeTip };
   }
